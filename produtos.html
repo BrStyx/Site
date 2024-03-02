@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECCHIP - Produtos</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Arquivo CSS para estilos -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <!-- Aqui você pode adicionar a sua logo -->
+            <img src="img/jpg.jpg" width="150px">&nbsp&nbsp<h1>TECCHIP</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="Contatos.html">Conheça-nos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="produtos">
+            <h2 class="loja">Conheça nossos produtos</h2>
+            <div class="lista-produtos">
+                <!-- Aqui serão listados os processadores disponíveis -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p> 2024 TECCHIP. Todos os direitos reservados.</p>
+    </footer>
+     <!-- Arquivo JavaScript -->
+</body>
+</html>
+<style>
+/* styles.css */
+.loja{
+    color: #fff;
+}
+        h1 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+.comprar {
+    padding: 10px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border-radius: 50px;
+    box-shadow: none;
+    outline: 0;
+    border: none;
+}
+
+.comprar:hover {
+    background-color: darkcyan;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+header {
+    background-color: #070506;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo, h1 {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 30px;
+    padding: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    background-color: #000000;
+}
+
+.produtos {
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+</style>
+<script>
+
+
+// scripts.js
+document.addEventListener("DOMContentLoaded", function() {
+    // Simulação de dados de processadores com imagens
+    const processadores = [
+        { id: 1, nome: "VALKIRIAM X", preco: 1500, imagem: "img/pro1.jpg" },
+        { id: 2, nome: "TECUSER", preco: 700, imagem: "img/pro2.jpg" },
+        { id: 3, nome: "TECNANO", preco: 900, imagem: "img/pro3.jpg" },
+        { id: 4, nome: "SUPERSU", preco: 900, imagem: "img/SP.jpg" },
+        { id: 5, nome: "EXCALIBUR", preco: 1300, imagem: "img/excalibu.jpg" },
+        { id: 6, nome: "TEC I.A", preco: 1200, imagem: "img/TEC I.A.jpg" },
+        // Adicione mais processadores conforme necessário
+    ];
+
+    const listaProdutos = document.querySelector('.lista-produtos');
+
+    // Função para exibir os processadores na página
+    function exibirProcessadores() {
+        listaProdutos.innerHTML = '';
+        processadores.forEach(processador => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <img src="${processador.imagem}" alt="${processador.nome}">
+                <h3>${processador.nome}</h3>
+                <p>Preço: R$ ${processador.preco.toFixed(2)}</p>
+                <button class="comprar" data-id="${processador.id}">Comprar</button>
+            `;
+            listaProdutos.appendChild(card);
+        });
+    }
+
+    // Função para lidar com a ação de compra
+    function comprarProcessador(id) {
+        // Aqui você pode implementar a lógica para a ação de compra do processador com o ID fornecido
+        alert(`Você está comprando o processador com ID ${id}`);
+    }
+
+    // Adiciona um event listener para os botões de comprar
+    listaProdutos.addEventListener('click', function(event) {
+        if (event.target.classList.contains('comprar')) {
+            const id = parseInt(event.target.getAttribute('data-id'));
+            comprarProcessador(id);
+        }
+    });
+
+    // Chama a função para exibir os processadores
+    exibirProcessadores();
+});
+</script>
